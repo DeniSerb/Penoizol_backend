@@ -1,6 +1,7 @@
 const express    = require('express');
 const bodyParser = require('body-parser');
 const morgan     = require('morgan')
+var index        = require('../routes/index');
 
 const app        = express();
 
@@ -19,6 +20,8 @@ app.use((req, res, next) => {
   }
   next();
 });
+
+app.use('/', index);
 
 app.use((req, res, next) => {
   const error = new Error('Not found');
